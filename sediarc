@@ -1,0 +1,16 @@
+# Directory containing xsession files
+session_dir=
+
+# Name of default user session
+# (See 'Name' field in /usr/share/xsessions/*.desktop)
+default_session=i3
+
+# dialog(1) timeout in seconds
+timeout=
+
+# Number to start numbering of menu items at
+start_index=
+
+# Configuration file for dialog(1)
+# If unset, dialog(1) will revert to system default
+dialogrc=themes/blue

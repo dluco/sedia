@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+name=$(basename "$0")
+longname="Sedia - Session Dialog"
+version="0.0.0"
+
+# Helpers
+error()
+{
+	echo "$name: $*" > /dev/stderr
+}
+
+message()
+{
+	echo "$name: $*"
+}
+
+exit_normal()
+{
+	exit 0
+}
+
+exit_error()
+{
+	exit 1
+}
+
+exit_cancel()
+{
+	exit 2
+}
+
+die()
+{
+	error "$*"
+	exit_error
+}
+
+# Source configuration file(s)
+# TODO: Remove later
+source sediarc
+
+if [[ -n "$1" ]]; then
+	if [[ -f "$1" ]]; then
+		source "$1"
+	else
+		die "config file \"$1\" does not exit"
+	fi
+elif [[ -f "$HOME/.sediarc" ]]; then
+	source "$HOME/.sediarc"
+elif [[ -f /etc/sediarc ]]; then
+	source /etc/sediarc
+fi
+
+# Default settings - must be applied after
+# configuration files are sourced.
+session_dir="${session_dir:-/usr/share/xsessions}"
+default_session=${default_session:-none}
+timeout=${timeout:-0}
+start_index="${start_index:-0}"
+dialogrc=${dialogrc:-}
+
+# Check if session_dir exists
+if [[ ! -d "$session_dir" ]]; then
+	die "xsession dir \"$session_dir\" does not exit"
+fi
+
+# Find available xsessions
+sessions=($(find "$session_dir" -name *.desktop | sort))
+
+# Check if there were files in session_dir
+[[ -z "$sessions" ]] && \
+	die "no xsessions found in \"$session_dir\""
+
+# Populate name_list, exec_list, and menu_items
+name_list=()
+exec_list=()
+is_default="off"
+menu_items=()
+for ((count = 0; count < ${#sessions[@]}; count++)); do
+	session_name=$(grep -Po "(?<=^Name=).*" ${sessions[$count]})
+	session_exec=$(grep -Po "(?<=^Exec=).*" ${sessions[$count]})
+	name_list+=("${session_name}")
+	exec_list+=("${session_exec}")
+	# Check if this is the default session specified in rcfile.
+	# If default_session is unspecified ("none"), then first menu item will be selected.
+	if [[ "$session_name" == "$default_session" || ("$default_session" == "none" && "$count" == 0) ]]; then
+		is_default="on"
+	else
+		is_default="off"
+	fi
+	menu_items+=("$((count+start_index))" "$session_name" "$is_default")
+done
+
+dialog_cmd=(
+	dialog --backtitle "$longname v$version" \
+	--ok-label "Confirm" --cancel-label "Exit" \
+	--timeout "$timeout" --radiolist "Select Session" 0 0 0
+)
+
+# Run dialog and retrieve choice
+index=$(DIALOGRC="$dialogrc" "${dialog_cmd[@]}" "${menu_items[@]}" 2>&1 >/dev/tty)
+
+if [[ $? != 0 ]]; then
+# Cancelled by user
+	clear # (Must be done here to preserve return status of dialog)
+	exit_cancel
+fi
+
+# Clear screen
+clear
+
+# Get true index of chosen item
+let index-=start_index
+
+startx_cmd=(
+	startx ~/.xinitrc
+)
+
+message "starting session: ${name_list[$index]}"
+
+# Start selected window manager session
+exec "${startx_cmd[@]}" "${exec_list[$index]}"
