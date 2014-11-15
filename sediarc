@@ -13,4 +13,4 @@ start_index=
 
 # Configuration file for dialog(1)
 # If unset, dialog(1) will revert to system default
-dialogrc=themes/blue
+dialogrc=/usr/share/sedia/themes/blue
