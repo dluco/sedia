@@ -26,7 +26,7 @@ version="0.0.0"
 # Helpers
 error()
 {
-	echo "$name: $*" > /dev/stderr
+	echo "$name: $*" 2>&1
 }
 
 message()
@@ -88,16 +88,22 @@ sessions=($(find "$session_dir" -name *.desktop | sort))
 [[ -z "$sessions" ]] && \
 	die "no xsessions found in \"$session_dir\""
 
-# Populate name_list, exec_list, and menu_items
+# startx(1) command to prepend to every session
+startx_cmd=(
+	startx ~/.xinitrc
+)
+
 name_list=()
 exec_list=()
-is_default="off"
 menu_items=()
+is_default="off"
+
+# Populate name_list, exec_list, and menu_items
 for ((count = 0; count < ${#sessions[@]}; count++)); do
 	session_name=$(grep -Po "(?<=^Name=).*" ${sessions[$count]})
 	session_exec=$(grep -Po "(?<=^Exec=).*" ${sessions[$count]})
-	name_list+=("${session_name}")
-	exec_list+=("${session_exec}")
+	name_list[$count]="${session_name}"
+	exec_list[$count]="${startx_cmd[@]} ${session_exec}"
 	# Check if this is the default session specified in rcfile.
 	# If default_session is unspecified ("none"), then first menu item will be selected.
 	if [[ "$session_name" == "$default_session" || ("$default_session" == "none" && "$count" == 0) ]]; then
@@ -105,8 +111,19 @@ for ((count = 0; count < ${#sessions[@]}; count++)); do
 	else
 		is_default="off"
 	fi
-	menu_items+=("$((count+start_index))" "$session_name" "$is_default")
+	menu_items+=("$((count + start_index))" "$session_name" "$is_default")
 done
+
+# Append console option to end:
+# Simply drop user back into shell
+name_list+=("Console")
+exec_list+=("$SHELL")
+if [[ "Console" == "$default_session" ]]; then
+	is_default="on"
+else
+	is_default="off"
+fi
+menu_items+=("$((count + start_index))" "Console" "$is_default")
 
 dialog_cmd=(
 	dialog --backtitle "$longname v$version" \
@@ -129,11 +146,7 @@ clear
 # Get true index of chosen item
 let index-=start_index
 
-startx_cmd=(
-	startx ~/.xinitrc
-)
-
 message "starting session: ${name_list[$index]}"
 
-# Start selected window manager session
-exec "${startx_cmd[@]}" "${exec_list[$index]}"
+# Execute selected item
+exec ${exec_list[$index]}
