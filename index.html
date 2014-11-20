@@ -34,7 +34,7 @@
         <h1>
 <a id="sedia" class="anchor" href="#sedia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sedia</h1>
 
-<p>Sedia is a simple dialog written in pure Bash to select the window manager session on login. </p>
+		<p>Sedia is a simple dialog written in pure Bash to select the window manager session on login. This program is based on / inspired by <a href="https://github.com/ghost1227/cdm">cdm</a>, The Console Display Manager.</p>
 
 <h2>
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
@@ -47,7 +47,7 @@
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p><b>sedia</b> [config file]</p>
+<p>Invocation: <code>$ sedia [config file]</code></p>
 
 <p>Sedia will source a config file in the following order:</p>
 
@@ -60,7 +60,11 @@
 <h2>
 <a id="customization" class="anchor" href="#customization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customization</h2>
 
-The color and other aspects of Sedia can be changed by specifying a theme file in the config using the "dialog_rc" option. A fully commented example can be generated with '$ dialog --create-rc "file"'. See /usr/share/sedia/themes for the default themes.
+<p>The color and other aspects of Sedia can be changed by specifying a theme file in the config using the "dialog_rc" option. A fully commented example can be generated with</p>
+<code>
+	$ dialog --create-rc "file"
+</code>
+<p>See /usr/share/sedia/themes for the default themes.</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
@@ -73,7 +77,7 @@ The color and other aspects of Sedia can be changed by specifying a theme file i
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Copyright 2014, David J. Luco</p>
+        <p class="copyright">Copyright 2014 David J. Luco</p>
       </footer>
     </div>
 
