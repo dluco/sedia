@@ -50,9 +50,9 @@
 <p>Sedia will source a config file at runtime from the following locations (in order):</p>
 
 <ul>
-	<li>[command line]</li>
-	<li>$HOME/.sediarc</li>
-	<li>/etc/sediarc</li>
+	<li><code>[command line]</code></li>
+	<li><code>$HOME/.sediarc</code></li>
+	<li><code>/etc/sediarc</code></li>
 </ul>
 
 <p>To start Sedia automatically on login to tty1, copy the contents of <code>sedia-profile.sh</code> to the <b>end</b> of your <code>~/.bash_profile</code> file. It is important to put the call to Sedia at the end of the file because the calling process (the shell) will be replaced with Sedia and execution of the file will stop at that line.</p>
