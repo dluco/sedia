@@ -34,20 +34,14 @@
         <h1>
 <a id="sedia" class="anchor" href="#sedia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sedia</h1>
 
-		<p>Sedia is a simple dialog written in pure Bash to select the window manager session on login. This program is based on / inspired by <a href="https://github.com/ghost1227/cdm">cdm</a>, The Console Display Manager.</p>
-
-<h2>
-<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
-
-<ul>
-<li>Bash</li>
-<li>Dialog</li>
-</ul>
+		<p>Sedia is a simple dialog written in pure Bash to select the window manager session on login. It was created to serve as a replacement to large and complex login-managers such as SLiM or LightDM. This program is based on / inspired by <a href="https://github.com/ghost1227/cdm">cdm</a>, The Console Display Manager.</p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Invocation: <code>$ sedia [config file]</code></p>
+
+<p>Sedia is designed to be run automatically upon login into a virtual terminal (tty1 by default). The user can then select and launch the desired window manager session. Similar to display managers such as SLiM or GDM, logging out of the session will return the user to the login screen.</p>
 
 <p>Sedia will source a config file in the following order:</p>
 
@@ -67,9 +61,14 @@
 <p>See /usr/share/sedia/themes for the default themes.</p>
 
 <h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>Sedia depends only on bash and dialog, both of which should be included by default in any distribution.</p>
+
+<h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>Licensed under GPLv2+</p>
+<p>Licensed under the GPLv2+</p>
 
       </section>
     </div>
