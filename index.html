@@ -34,7 +34,7 @@
         <h1>
 <a id="sedia" class="anchor" href="#sedia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sedia</h1>
 
-		<p>Sedia is a simple dialog written in pure Bash to select the window manager session on login. It was created to serve as a replacement to large and complex login-managers such as SLiM or LightDM. This program is based on / inspired by <a href="https://github.com/ghost1227/cdm">cdm</a>, The Console Display Manager.</p>
+		<p>Sedia is a simple dialog written in pure Bash to select the window manager session on login. It was created to serve as a replacement to large and complex login-managers such as SLiM and LightDM. This program is based on / inspired by <a href="https://github.com/ghost1227/cdm">cdm</a>, The Console Display Manager.</p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -43,13 +43,15 @@
 
 <p>Sedia is designed to be run automatically upon login into a virtual terminal (tty1 by default). The user can then select and launch the desired window manager session. Similar to display managers such as SLiM or GDM, logging out of the session will return the user to the login screen.</p>
 
-<p>Sedia will source a config file in the following order:</p>
+<p>Sedia will source a config file at runtime from the following locations (in order):</p>
 
 <ul>
 	<li>[command line]</li>
 	<li>$HOME/.sediarc</li>
 	<li>/etc/sediarc</li>
 </ul>
+
+<p>To start Sedia automatically on login to tty1, copy the contents of <code>sedia-profile.sh</code> to the <b>end</b> of your <code>~/.bash_profile</code> file. It is important to put the call to Sedia at the end of the file because the calling process (the shell) will be replaced with Sedia and execution of the file will stop at that line.</p>
 
 <h2>
 <a id="customization" class="anchor" href="#customization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customization</h2>
