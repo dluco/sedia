@@ -40,19 +40,19 @@ border2_color = (WHITE,BLACK,OFF)
 border_color = (WHITE,BLACK,OFF)
 
 # Active button color
-button_active_color = (WHITE,WHITE,ON)
+button_active_color = (WHITE,BLACK,ON)
 
 # Inactive button color
 button_inactive_color = (WHITE,BLACK,OFF)
 
 # Active button key color
-button_key_active_color = (WHITE,WHITE,ON)
+button_key_active_color = (WHITE,BLACK,ON)
 
 # Inactive button key color
 button_key_inactive_color = (WHITE,BLACK,OFF)
 
 # Active button label color
-button_label_active_color = (WHITE,WHITE,ON)
+button_label_active_color = (WHITE,BLACK,ON)
 
 # Inactive button label color
 button_label_inactive_color = (WHITE,BLACK,OFF)
@@ -86,7 +86,7 @@ menubox_border2_color = (WHITE,BLACK,OFF)
 item_color = (WHITE,BLACK,OFF)
 
 # Selected item color
-item_selected_color = (WHITE,WHITE,ON)
+item_selected_color = (WHITE,BLACK,ON)
 
 # Tag color
 tag_color = (WHITE,BLACK,ON)

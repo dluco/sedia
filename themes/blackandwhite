@@ -30,29 +30,29 @@ screen_color = (WHITE,BLACK,ON)
 shadow_color = (BLACK,WHITE,ON)
 
 # Dialog box color
-dialog_color = (WHITE,BLACK,OFF)
+dialog_color = (WHITE,BLACK,ON)
 
 # Dialog box title color
 title_color = (WHITE,WHITE,ON)
 
 # Dialog box border color
-border2_color = (WHITE,BLACK,OFF)
-border_color = (WHITE,BLACK,OFF)
+border_color = (WHITE,BLACK,ON)
+border2_color = (WHITE,BLACK,ON)
 
 # Active button color
-button_active_color = (WHITE,BLACK,ON)
+button_active_color = (BLACK,WHITE,OFF)
 
 # Inactive button color
 button_inactive_color = (WHITE,BLACK,OFF)
 
 # Active button key color
-button_key_active_color = (WHITE,BLACK,ON)
+button_key_active_color = (BLACK,WHITE,OFF)
 
 # Inactive button key color
 button_key_inactive_color = (WHITE,BLACK,OFF)
 
 # Active button label color
-button_label_active_color = (WHITE,BLACK,ON)
+button_label_active_color = (BLACK,WHITE,OFF)
 
 # Inactive button label color
 button_label_inactive_color = (WHITE,BLACK,OFF)
@@ -76,35 +76,35 @@ searchbox_border_color = (WHITE,WHITE,OFF)
 position_indicator_color = (WHITE,WHITE,ON)
 
 # Menu box color
-menubox_color = (WHITE,BLACK,OFF)
+menubox_color = (WHITE,BLACK,ON)
 
 # Menu box border color
-menubox_border_color = (WHITE,BLACK,OFF)
-menubox_border2_color = (WHITE,BLACK,OFF)
+menubox_border_color = (WHITE,BLACK,ON)
+menubox_border2_color = (WHITE,BLACK,ON)
 
 # Item color
 item_color = (WHITE,BLACK,OFF)
 
 # Selected item color
-item_selected_color = (WHITE,BLACK,ON)
+item_selected_color = (BLACK,WHITE,OFF)
 
 # Tag color
-tag_color = (WHITE,BLACK,ON)
+tag_color = (WHITE,BLACK,OFF)
 
 # Selected tag color
-tag_selected_color = (WHITE,BLACK,ON)
+tag_selected_color = (BLACK,WHITE,OFF)
 
 # Tag key color
 tag_key_color = (WHITE,BLACK,OFF)
 
 # Selected tag key color
-tag_key_selected_color = (WHITE,BLACK,ON)
+tag_key_selected_color = (BLACK,WHITE,OFF)
 
 # Check box color
 check_color = (WHITE,BLACK,OFF)
 
 # Selected check box color
-check_selected_color = (WHITE,BLACK,ON)
+check_selected_color = (BLACK,WHITE,OFF)
 
 # Up arrow color
 uarrow_color = (WHITE,BLACK,ON)
