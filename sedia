@@ -133,15 +133,15 @@ dialog_cmd=(
 
 # Run dialog and retrieve choice
 index=$(DIALOGRC="$dialogrc" "${dialog_cmd[@]}" "${menu_items[@]}" 2>&1 >/dev/tty)
-
-if [[ $? != 0 ]]; then
-# Cancelled by user
-	clear # (Must be done here to preserve return status of dialog)
-	exit_cancel
-fi
+err=$?
 
 # Clear screen
 clear
+
+if [[ $err != 0 ]]; then
+# Cancelled by user
+	exit_cancel
+fi
 
 # Get true index of chosen item
 let index-=start_index
